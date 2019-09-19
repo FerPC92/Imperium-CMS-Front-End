@@ -1,0 +1,72 @@
+<app-sidebar></app-sidebar>
+
+<div class="container-fluid" >
+  <div class="row row-head">
+    <div class="col  col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="head-text">
+        <h1>Lista De Cursos Activos</h1>
+        <a routerLinkActive="active" [routerLink]="['/addCourse']"><button class=" btn-warning button-add-course">Añadir Curso</button></a>
+      </div>
+    </div>
+
+  </div>
+  <div class="row row-list-menu">
+    <div class="col col-xs-3 col-sm-3 col-md-3 col-lg-3 col-list-menu col-list-menu-one">
+      <div class="list-menu-box">
+        <h3>Nombre del curso</h3>
+      </div>
+    </div>
+    <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-list-menu">
+      <div class="list-menu-box">
+        <h3>Lugar</h3>
+      </div>
+    </div>
+    <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-list-menu">
+      <div class="list-menu-box">
+        <h3 class="date-text">Fecha Inicio</h3>
+      </div>
+    </div>
+    <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-list-menu">
+      <div class="list-menu-box">
+        <h3 class="date-text">Fecha Fin</h3>
+      </div>
+    </div>
+    <div class="col col-xs-3 col-sm-3 col-md-3 col-lg-3 col-list-menu">
+      <div class="list-menu-box">
+        <h3>Acciones</h3>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row row-list-courses" *ngFor="let element of this._mainService.allCourses">
+        <div class="col col-xs-3 col-sm-3 col-md-3 col-lg-3 col-list-courses col-list-courses-one">
+          <div class="list-menu-courses-box">
+            <h4>{{element.courseCategory.name}}</h4>
+          </div>
+        </div>
+        <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-list-courses">
+          <div class="list-menu-courses-box">
+            <h4>{{element.place.place}}</h4>
+          </div>
+        </div>
+        <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-list-courses">
+          <div class="list-menu-courses-box">
+            <h4>{{element.courseStartDay | slice:0:10}}</h4>
+          </div>
+        </div>
+        <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-list-courses">
+          <div class="list-menu-courses-box">
+            <h4>{{element.courseEndDay | slice:0:10}}</h4>
+          </div>
+        </div>
+        <div class="col col-xs-3 col-sm-3 col-md-3 col-lg-3 col-list-courses">
+          <div class="list-menu-courses-box">
+                <a routerLinkActive="active" [routerLink]="['/courses', element._id]"><button class="btn btn-info">Ver detalle</button></a>
+          </div>
+        </div>
+    
+      </div>
+
+
+</div>

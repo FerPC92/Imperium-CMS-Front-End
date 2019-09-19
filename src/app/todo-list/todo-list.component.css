@@ -1,0 +1,19 @@
+.container-fluid{
+    position: absolute;
+    top: 78px;
+    left: 274px;
+    width: 1006px;
+}
+
+
+
+@media (max-width:1039px) {
+
+    .container-fluid {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+    }
+    
+}

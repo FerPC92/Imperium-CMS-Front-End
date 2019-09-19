@@ -1,0 +1,91 @@
+<app-sidebar></app-sidebar>
+<div class="container-fluid">
+  <div class="row row-add-course">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="form-box">
+        <h1>Editar Curso </h1>
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputState">Categoria</label>
+              <select id="inputState" class="form-control" [(ngModel)]="form.courseCategory" [ngModelOptions]="{standalone: true}">
+                <option selected>{{form.courseCategory["name"]}}</option>
+                <option  *ngFor="let element of this._mainService.allCategories ; let i = index">
+                  {{element.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputState">Lugar</label>
+              <select id="inputState" class="form-control" [(ngModel)]="form.place" [ngModelOptions]="{standalone: true}">
+                <option selected>{{form.place.place}}</option>
+                <option *ngFor="let element of this._mainService.allPlaces ; let i = index">{{element.place}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-3">
+              <label class="label-add" for="example-date-input">Fecha De Inicio</label>
+              <input class="form-control" type="date" value="2019-01-01" id="example-date-input" [(ngModel)]="form.courseStartDay" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-3">
+              <label class="label-add" for="example-date-input-fin">Fecha De Finalización</label>
+              <input class="form-control" type="date" value="2020-01-01" id="example-date-input-fin" [(ngModel)]="form.courseEndDay" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-2 col-days">
+              <label class="label-add" for="days">Cantidad De Días</label>
+              <input class="form-control" type="number" id="days" [(ngModel)]="form.courseDuration" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-4">
+              <label class="label-add" for="modality">Modalidad</label>
+              <input class="form-control" type="text" id="modality" placeholder="Full Time / Part Time" [(ngModel)]="form.courseModality" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-4">
+              <label class="label-add" for="schedule">Horario</label>
+              <input class="form-control" type="text" id="schedule" placeholder="09 a 18 / 09 a 13" [(ngModel)]="form.courseTime" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputHeadTeacher">Head Teacher</label>
+              <select id="inputHeadTeacher" class="form-control" [(ngModel)]="form.teachers[0]" [ngModelOptions]="{standalone: true}">
+                <option selected>{{form.teachers[1].userName}}</option>
+                <option  *ngFor="let element of this._mainService.allTeachers ; let i = index">{{element.userName}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputSupportTeacher">Support Teacher</label>
+              <select id="inputSupportTeacher" class="form-control" [(ngModel)]="form.teachers[1]" [ngModelOptions]="{standalone: true}">
+                <option selected>{{form.teachers[0].userName}}</option>
+                <option *ngFor="let element of this._mainService.allTeachers ; let i = index">{{element.userName}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <button (click)="editCourse()" class="btn btn-primary btn-add-course" data-toggle="modal" data-target="#exampleModal">Editar Curso</button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Edicion De Curso Activo</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Curso modificado Exitosamente
+                      Redireccionando a Home...
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,83 @@
+.container-fluid{
+    position: absolute;
+    top: 78px;
+    left: 274px;
+    width: 1006px;
+}
+
+.table-box{
+    width: 97%;
+    overflow: scroll;
+    overflow-y: hidden;
+    /* height: 211px; */
+}
+
+.bt-save{
+    position: absolute;
+    right: 400px;
+    padding: 7px;
+    border: none;
+    width: 140px;
+    height: 33px;
+    border-radius: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 12px;
+    top: 5px;
+}
+
+table td{
+    border-top: none !important;
+    padding-top: 3px !important;
+    text-align: center;
+
+}
+
+.table-info-users{
+    position: relative;
+    top: 38px;
+    color: black;
+    font-family: 'Lato'
+}
+
+.table thead{
+    color: black;
+    font-family: 'Lato'
+}
+
+.porcentaje{
+    padding-left: 5px;
+   
+}
+
+.col-name{
+    padding-right: 10px;
+    padding-right: 66px;
+    padding-left: 50px;
+}
+
+
+@media (max-width:1039px) {
+
+    .container-fluid {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+    }
+
+    .bt-save{
+        position: absolute;
+        left: 0px;
+        padding: 7px;
+        border: none;
+        width: 149px;
+        height: 35px;
+        border-radius: 8px;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 12px;
+        top: 500px;
+    }
+    
+}

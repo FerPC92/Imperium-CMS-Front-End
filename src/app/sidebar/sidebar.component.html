@@ -1,0 +1,103 @@
+<header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container-fluid">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="/home">
+          <strong class="dark-text">I M P E R I U M</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto nav-cont">
+            <li class="nav-item active">
+              <a class="nav-link waves-effect" href="#" id="home-link">Inicio
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect link-prof" href=""><img [src]="profileImg" class="img-fluid img-prof img-small-profile" alt=""></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect">{{userName}}</a>
+            </li>
+            <li class="nav-item">
+                <h6 class="dropleft"><i class="fas fa-caret-down" aria-hidden="true" id="dropdownMenu"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                  <a class="dropdown-item">Enviar Un E-mail</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Modificar Perfil </a>
+                </div>
+              </h6>
+            </li>
+          </ul>
+          
+
+          <!-- Right -->
+          <!-- <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a href="" class="nav-link waves-effect" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link waves-effect" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link border border-light rounded waves-effect"
+                target="_blank">
+                <i class="fab fa-github mr-2"></i>MDB GitHub
+              </a>
+            </li>
+          </ul> -->
+
+        </div>
+
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Sidebar -->
+    <div class="sidebar-fixed position-fixed " id="side-change-color">
+      <div class="head-black">
+        <h3><img src="http://angular-material.fusetheme.com/assets/images/logos/fuse.svg" alt=""> I M P E R I U M</h3>
+       <h5>{{userName}}</h5>
+       <h6>{{userEmail}}</h6>
+      </div>
+      <div class="circle-grey"></div>
+      <a class="logo-wrapper waves-effect a-img">
+        <img [src]="profileImg" class="img-fluid img-prof" alt="">
+      </a>
+
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item  waves-effect list-side"> <!-- active class -->
+          <i class="fas fa-chart-pie mr-3"></i>Cursos
+        </a>
+        <a href="#" class="list-group-item list-group-item-action waves-effect list-side-others">
+          <i class="fas fa-user mr-3"></i>Alumnos</a>
+        <a href="#" class="list-group-item list-group-item-action waves-effect list-side-others">
+            <i class="fas fa-user mr-3"></i>Profesores</a>
+        <a href="#" [routerLink]="['/todo']" class="list-group-item list-group-item-action waves-effect list-side-others">
+          <i class="fas fa-map mr-3" ></i>TO-DO</a>
+        <a href="#" class="list-group-item list-group-item-action waves-effect list-side-others">
+            <i class="fas fa-table mr-3"></i>Calendario</a>
+      </div>
+      <div class="logout">
+          <a href="#" class="list-group-item list-group-item-action waves-effect list-side-others" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>  Logout</a>
+      </div>
+
+    </div>

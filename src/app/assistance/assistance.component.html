@@ -1,0 +1,58 @@
+<app-sidebar></app-sidebar>
+
+<div class="container-fluid" *ngFor=" let element of this._mainService.individualCourse">
+  <div class="row row-assistance">
+    <div class="col  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-assistance">
+      <div class="table-box">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="col-name">Nombre</th>
+            <th scope="col" class="porcentaje text-nowrap">% Asistencia</th>
+            <th scope="col"> Días De Curso : {{element.courseDuration}}</th>
+            <th scope="col"> <button class="btn btn-success bt-save" (click)="controlAssistance()">Guardar Cambios</button></th>
+          </tr>
+        </thead>
+        
+        <tbody >
+          <tr *ngFor=" let item of element.students; let i = index;">
+            <td class="table-info-users">{{item.userName}}</td>
+            <td class="table-info-users ">{{item.porcentaje}}%</td>
+
+              <table *ngIf="this._mainService.individualCourse[0].students[i]['assistance'].length >= this._mainService.courseNumDays.length">
+                <tr>
+                  <td *ngFor="let dia of this._mainService.courseNumDays; let j = index">
+                    
+                    <table>
+                      <tr>
+                        <td colspan="2">{{dia.numero}}<br>{{dia.diaSemana}}</td>
+                      </tr>
+                      <tr>
+                        <td>M</td>
+                        <td>T</td>
+
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="checkbox"
+                            [(ngModel)]="this._mainService.individualCourse[0]['students'][i]['assistance'][j]['M']"
+                            [ngModelOptions]="{standalone: true}"></td>
+                        <td><input [(ngModel)]="this._mainService.individualCourse[0]['students'][i]['assistance'][j]['A']"
+                            [ngModelOptions]="{standalone: true}" type="checkbox"></td>
+                      </tr>
+                    </table>
+                  </td>
+
+                </tr>
+              </table>
+
+            
+          </tr>
+
+        </tbody>
+     
+      </table> 
+    </div>
+    </div>
+  </div>
+</div>

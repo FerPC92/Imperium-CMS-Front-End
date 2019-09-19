@@ -1,0 +1,272 @@
+<app-sidebar></app-sidebar>
+
+<div class="container-fluid" *ngFor="let element of this._mainService.individualCourse">
+  <div class="row row-ind-head">
+    <div class="col  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-ind-head">
+      <div class="detail-board">
+        <h2>Detalle Del Curso : {{element.courseCategory.name}}</h2>
+
+        <button [routerLink]="['/assistanceControl', element._id]"  class="btn btn-ind btn-success">Controlar asistencia</button>
+        <div class="button-gr" *ngIf="this._mainService.isAdmin">
+          <a routerLinkActive="active" [routerLink]="['/editActiveCourse', element._id]"><button
+              class="btn btn-ind btn-ind-warning btn-warning">Editar Curso</button></a>
+          <button class="btn btn-ind btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar Curso</button>
+
+          <!--modal-->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Eliminar Curso</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ¿Estas Seguro Que Deseas Eliminar Este curso?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                  <button type="button" class="btn btn-primary"
+                    (click)="this._mainService.deleteCourse(element._id)">Guardar Cambios</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="row row-data-ind-course">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 col-ind-data">
+      <div class="data-display">
+        <h5>Fecha Inicio : {{element.courseStartDay | slice:0:10}}</h5>
+        <h5>Fecha Finalización : {{element.courseEndDay | slice:0:10}}</h5>
+        <h5>Total Alumnos : {{element.students.length}}</h5>
+        <h5>Total Profesores : {{element.teachers.length}}</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-data-users">
+
+
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 col-ind-users  col-ind-users-teacher">
+      <h3>Profesores</h3>
+      <div class="user-data" *ngFor="let item of element.teachers">
+        <div class="row row-data-users-two">
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="user-photo">
+              <!-- <h4>Foto</h4> -->
+              <img [src]="item.profile_image" alt="">
+            </div>
+          </div>
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-user-name">
+            <div class="user-name">
+              <h4>Nombre</h4>
+              <h6>{{item.userName}}</h6>
+            </div>
+          </div>
+          <div class="col col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="user-email">
+              <h4>E-mail</h4>
+              <h6>{{item.userEmail}}</h6>
+            </div>
+          </div>
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="user-phone">
+              <h4>Teléfono</h4>
+              <h6>{{item.phone}}</h6>
+            </div>
+          </div>
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="user-phone">
+              <h4>Función</h4>
+              <h6>{{item.type}}</h6>
+            </div>
+          </div>
+          <div class="col col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <div class="user-phone dropd ">
+              <h6 class="dropleft"><i class="fa fa-ellipsis-v" aria-hidden="true" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="mailto: {{item.userEmail}}">Enviarle Un E-mail</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Eliminar Del Curso </a>
+                </div>
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 col-ind-users">
+      <div class="student-title">
+        <h3>Alumnos</h3>
+        <button class="brn btn-primary btnStudent" data-toggle="modal" data-target="#exampleModalCenter">Añadir
+          Alumno</button>
+        <!--modal añadir alumno-->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Añadir Alumno</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label for="inputname1">Nombre Completo</label>
+                    <input type="text" id="inputname1" class="form-control mx-sm-3" aria-describedby="nameHelpInline"
+                      [(ngModel)]="form.userName" [ngModelOptions]="{standalone: true}">
+                  </div>
+                  <div class="form-group form-mail">
+                    <label for="inputEmail1">E-mail</label>
+                    <input type="email" id="inputEmail1" class="form-control mx-sm-3" aria-describedby="emailHelpInline"
+                      [(ngModel)]="form.userEmail" [ngModelOptions]="{standalone: true}">
+                  </div>
+                  <div class="form-group form-img">
+                    <label for="inputimg1">Imagen</label>
+                    <input type="text" id="inputimg1" class="form-control mx-sm-3" aria-describedby="imgHelpInline"
+                      [(ngModel)]="form.profile_image" [ngModelOptions]="{standalone: true}">
+                  </div>
+                  <div class="form-group form-phone">
+                    <label for="inputphone1">Telefono</label>
+                    <input type="text" id="inputphone1" class="form-control mx-sm-3" aria-describedby="phoneHelpInline"
+                      [(ngModel)]="form.phone" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                <button (click)="addStudentToCourse()" type="button" class="btn btn-primary">Añadir Alumno</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="user-data" *ngFor="let item of element.students">
+        <div class="row row-data-users-two">
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="user-photo">
+              <!-- <h4>Foto</h4> -->
+              <img [src]="item.profile_image" alt="">
+            </div>
+          </div>
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2 col-user-name">
+            <div class="user-name">
+              <h4>Nombre</h4>
+              <h6>{{item.userName}}</h6>
+            </div>
+          </div>
+          <div class="col col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="user-email">
+              <h4>E-mail</h4>
+              <h6>{{item.userEmail}}</h6>
+            </div>
+          </div>
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="user-phone">
+              <h4>Teléfono</h4>
+              <h6>{{item.phone}}</h6>
+            </div>
+          </div>
+          <div class="col col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="user-assistance">
+              <h4>% Asistencia</h4>
+              <h6>{{item.porcentaje}}%</h6>
+            </div>
+          </div>
+          <div class="col col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <div class="user-assistance dropd">
+              <h6 class="dropleft"><i class="fa fa-ellipsis-v" aria-hidden="true" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="mailto: {{item.userEmail}}">Enviarle Un E-mail</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModaledit" (click)="editStudentModal(item)" >Editar Alumno</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#example" >Eliminar Del Curso </a>            
+                </div>
+              </h6>
+              <!--modal editar alumno-->
+              <div class="modal fade" id="exampleModaledit" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Editar Alumno</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" place>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for="inputname1">Nombre Completo</label>
+                        <input type="text" id="inputname1" class="form-control mx-sm-3" aria-describedby="nameHelpInline"
+                          [(ngModel)]="formEdit.userName" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <div class="form-group form-mail">
+                        <label for="inputEmail1">E-mail</label>
+                        <input type="email" id="inputEmail1" class="form-control mx-sm-3" aria-describedby="emailHelpInline"
+                          [(ngModel)]="formEdit.userEmail" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <div class="form-group form-img">
+                        <label for="inputimg1">Imagen</label>
+                        <input type="text" id="inputimg1" class="form-control mx-sm-3" aria-describedby="imgHelpInline"
+                          [(ngModel)]="formEdit.profile_image" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <div class="form-group form-phone">
+                        <label for="inputphone1">Telefono</label>
+                        <input type="text" id="inputphone1" class="form-control mx-sm-3" aria-describedby="phoneHelpInline"
+                          [(ngModel)]="formEdit.phone" [ngModelOptions]="{standalone: true}">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                    <button (click)="editStudent()" type="button" class="btn btn-primary">Editar Alumno</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!--modal eliminar usuario del curso-->
+              <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Del Curso Activo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ¿Estas Seguro Que Deseas eliminar A Este Alumno Del Presente Curso ?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                        <button (click)="deleteFromCourse(item.userEmail)" type="button" class="btn btn-primary">Guardar Cambios</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---->
+
+
+  </div>
+
+</div>

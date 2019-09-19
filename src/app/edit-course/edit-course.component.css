@@ -1,0 +1,73 @@
+.container-fluid{
+    position: absolute;
+    top: 78px;
+    left: 274px;
+    /* width: 1006px; */
+    width:989px;
+}
+
+.form-box{
+   /*  border: 1px solid grey; */
+    text-align: center;
+    width: 577px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding: 10px;
+    box-shadow: 0px 1px 29px -11px rgba(0,0,0,0.75);
+}
+
+.form-box > h1{
+    font-family: 'Lato';
+    margin: 12px auto;
+}
+
+.label-add{
+    font-family: 'Lato';
+    margin: 6px auto;
+}
+
+.col-days{
+    padding-right: 0;
+}
+
+.btn-add-course{
+    border-radius: 8px;
+}
+
+.form-row{
+    width: 789px;
+}
+
+
+
+
+
+@media (max-width:1039px) {
+
+    .container-fluid {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+    }
+    
+
+
+}
+
+@media (max-width:800px) {
+    .form-box{
+        text-align: center;
+        width: auto;
+        margin: auto;
+        height: 951px;
+    }
+    .form-row{
+        width: auto;
+    }
+}
+
+
+

@@ -1,0 +1,75 @@
+<app-sidebar></app-sidebar>
+<div class="container-fluid">
+  <div class="row row-add-course">
+    <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="form-box">
+        <h1>Añadir Curso Activo</h1>
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputState">Categoria</label>
+              <select id="inputState" class="form-control" [(ngModel)]="form.courseCategory" [ngModelOptions]="{standalone: true}">
+                <option selected>Seleccionar Categoria</option>
+                <option  *ngFor="let element of this._mainService.allCategories ; let i = index">
+                  {{element.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputState">Lugar</label>
+              <select id="inputState" class="form-control" [(ngModel)]="form.place" [ngModelOptions]="{standalone: true}">
+                <option selected>Seleccionar Lugar</option>
+                <option *ngFor="let element of this._mainService.allPlaces ; let i = index">{{element.place}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-3">
+              <label class="label-add" for="example-date-input">Fecha De Inicio</label>
+              <input class="form-control" type="date" value="2019-01-01" id="example-date-input" [(ngModel)]="form.courseStartDay" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-3">
+              <label class="label-add" for="example-date-input-fin">Fecha De Finalización</label>
+              <input class="form-control" type="date" value="2020-01-01" id="example-date-input-fin" [(ngModel)]="form.courseEndDay" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-2 col-days">
+              <label class="label-add" for="days">Cantidad De Días</label>
+              <input class="form-control" type="number" id="days" [(ngModel)]="form.courseDuration" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-4">
+              <label class="label-add" for="modality">Modalidad</label>
+              <input class="form-control" type="text" id="modality" placeholder="Full Time / Part Time" [(ngModel)]="form.courseModality" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="col-4">
+              <label class="label-add" for="schedule">Horario</label>
+              <input class="form-control" type="text" id="schedule" placeholder="09 a 18 / 09 a 13" [(ngModel)]="form.courseTime" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputHeadTeacher">Head Teacher</label>
+              <select id="inputHeadTeacher" class="form-control" [(ngModel)]="form.teachers[0]" [ngModelOptions]="{standalone: true}">
+                <option selected>...</option>
+                <option  *ngFor="let element of this._mainService.allTeachers ; let i = index">{{element.userName}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label class="label-add" for="inputSupportTeacher">Support Teacher</label>
+              <select id="inputSupportTeacher" class="form-control" [(ngModel)]="form.teachers[1]" [ngModelOptions]="{standalone: true}">
+                <option selected>...</option>
+                <option *ngFor="let element of this._mainService.allTeachers ; let i = index">{{element.userName}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <button (click)="addCourse()" class="btn btn-primary btn-add-course">Crear Nuevo Curso</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
