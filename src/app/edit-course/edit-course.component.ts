@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {MainService} from '../services/main.service'
 import {ApiService} from '../services/api.service'
+import {  Router } from '@angular/router';
 @Component({
   selector: 'app-edit-course',
   templateUrl: './edit-course.component.html',
@@ -51,11 +52,15 @@ export class EditCourseComponent implements OnInit {
     this.form['place'] = places[0]
 
     this._mainService.editCourse(this.idActive,this.form)
+
+    setTimeout(()=> { this._router.navigateByUrl('/home') }, 1000)
+
+    console.log(this.form)
     
 
   }
 
-  constructor(public _routeActive : ActivatedRoute, public _apiService : ApiService  ,public _mainService : MainService) {
+  constructor(public _routeActive : ActivatedRoute, public _apiService : ApiService  ,public _mainService : MainService, public _router :Router) {
       this._mainService.getTeachers();
       this._mainService.getCategories();
       this._mainService.getPlaces();

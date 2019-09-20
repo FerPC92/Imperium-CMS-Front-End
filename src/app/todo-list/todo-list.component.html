@@ -1,14 +1,73 @@
 <app-sidebar></app-sidebar>
 
 <div class="container-fluid">
-    <div class="blue-head">
-        <div class="blue-content-1">
-            <h5><i class="far fa-check-square"></i></h5>
-            <h3>To-Do</h3>
-            <h5>nombre</h5>
-        </div>
-        <div class="blue-content-2">
-            <input type="text" placeholder="Buscar Una Tarea En Particular">
-        </div>
+  <div class="blue-head">
+    <div class="blue-content-1">
+      <div class="todo-head-text">
+      <h5><i class="far fa-check-square"></i></h5>
+      <h3>To-Do List</h3>
     </div>
+      <div class="blue-content-2">
+        <input type="text" placeholder="Buscar Tarea " class="input-head">
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="grey-body">
+    
+    <div class="task-title">
+      <label for="title-add">Nombre De La Tarea</label>
+      <input id="title-add" type="text" [(ngModel)]="todo.title" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="date-file">
+        <label for="date-add" class="label-date">Fecha</label>
+      <input id="date-add" type="date" [(ngModel)]="todo.date" [ngModelOptions]="{standalone: true}">
+      
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label for="btnUpload" class="upl-label"> Añadir Archivos</label>
+          <span class="input-group-text upload" (click)="upload()" id="btnUpload">Upload</span>
+        </div>
+        <div class="custom-file">
+          <form action="/api/upload" method="post" enctype="multipart/form-data">
+            <input (change)="fileChange($event)" type="file" class="custom-file-input" id="inputGroupFile01"
+              aria-describedby="inputGroupFileAddon01" [(ngModel)]="todo.file" [ngModelOptions]="{standalone: true}">
+
+          </form>
+          <label class="custom-file-label" for="inputGroupFile01">Seleccionar Archivo</label>
+        </div>
+      </div>
+    </div>
+    <div class="add-task">
+        <button (click)="addtask()">Añadir !</button>
+      </div>
+
+    <table class="table table-todo" *ngIf="this._mainService.individualTeacher[0] != undefined">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Tarea</th>
+          <th scope="col">Archivos</th>
+          <th scope="col">acciones</th>
+
+        </tr>
+      </thead>
+      <tbody *ngFor=" let element of this._mainService.individualTeacher[0]['todo'] ; let i = index">
+        <tr [ngClass]="element.status ? 'checked' : 'uncheck'">
+          <th scope="row"><i class="far fa-square" [ngClass]="element.status ? 'far fa-square checkbox' : 'far fa-square'"    (click)="changeCheckedTask(element,i)" ></i></th>
+          <td>{{this._mainService.formatDate(element.date)}}</td>
+          <td>{{element.title}}</td>
+          <td>{{element.file | slice:12:30}}</td>
+          <td>
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-trash-alt" (click)=" deleteTask(i)"></i>
+          
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>

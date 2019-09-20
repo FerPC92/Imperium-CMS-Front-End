@@ -191,7 +191,25 @@ export class MainService {
       
   }
 
+  editIndividualTeacher(body){
+
+    /* body._id = this.individualTeacher[0]["_id"] */
+
+    this._apiService.put(`http://localhost:3000/modTeacher`,body).subscribe(response => {
+      console.log(response)
+    })
+  }
+
   
+  formatDate(date){
+
+    let dateArr = date.split("-");
+
+    
+
+    return dateArr[2] + "/" + dateArr[1] + "/" + dateArr[0];
+
+  }
 
   getPlaces(){
     this._apiService.get(`http://localhost:3000/places`).subscribe(response => { 

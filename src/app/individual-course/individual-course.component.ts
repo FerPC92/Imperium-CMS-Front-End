@@ -78,13 +78,13 @@ export class IndividualCourseComponent implements OnInit {
 
     this._mainService.editStudentDB(this.formEdit);
 
-    for (let index = 0; index < this._mainService.individualCourse[0]["courseDuration"]; index++) {
+    /* for (let index = 0; index < this._mainService.individualCourse[0]["courseDuration"]; index++) {
       this.formEdit['assistance'].push({
         "day": index,
         "M": false,
         "A": false
       })
-    }    
+    }   */  
 
     for(let i=0; i< this._mainService.individualCourse[0]["students"].length; i++){
       if(this.formEdit["userEmail"] == this._mainService.individualCourse[0]["students"][i]["userEmail"] )
