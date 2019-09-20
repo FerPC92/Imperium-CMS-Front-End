@@ -203,6 +203,10 @@
   font-family: 'Muli';
 }
 
+.resp-nav-link{
+  display: none !important
+}
+
 @media (min-width: 1200px) {
 
   .navbar,
@@ -245,4 +249,18 @@
   .navbar-toggler-icon{
     margin-right: 5px !important;
 }
+.resp-nav-link{
+  display: block !important
+}
+.resp-nav-link-out{
+  display: none !important
+}
+
+.resp-nav-link > strong > img {
+  width: 22px;
+  margin-right: 10px;
+
+}
+
+
 }

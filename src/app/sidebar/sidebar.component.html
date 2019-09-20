@@ -5,8 +5,11 @@
       <div class="container-fluid">
 
         <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="/home">
-          <strong class="dark-text">I M P E R I U M</strong>
+        <a class="navbar-brand waves-effect resp-nav-link"  [routerLink]="['/home']">
+          <strong class="dark-text "><img src="http://angular-material.fusetheme.com/assets/images/logos/fuse.svg" alt="">I M P E R I U M</strong>
+        </a>
+        <a class="navbar-brand waves-effect resp-nav-link-out"  [routerLink]="['/home']">
+          <strong class="dark-text">N E O L A N D</strong>
         </a>
 
         <!-- Collapse -->
@@ -20,8 +23,17 @@
 
           <!-- Left -->
           <ul class="navbar-nav mr-auto nav-cont">
+              <li class="nav-item active">
+                  <a class="nav-link waves-effect resp-nav-link"  [routerLink]="['/todo']" id="home-link">To-Do
+                  </a>
+                </li>
+              <li class="nav-item active">
+                  <a class="nav-link waves-effect resp-nav-link"  [routerLink]="['/calendar']" id="home-link">Calendario
+                  </a>
+                </li>
+
             <li class="nav-item active">
-              <a class="nav-link waves-effect" href="/home" id="home-link">Inicio
+              <a class="nav-link waves-effect"  [routerLink]="['/home']" id="home-link">Inicio
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -83,7 +95,7 @@
       </a>
 
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item  waves-effect list-side"> <!-- active class -->
+        <a [routerLink]="['/home']" class="list-group-item  waves-effect list-side"> <!-- active class -->
           <i class="fas fa-chart-pie mr-3"></i>Cursos
         </a>
         <a href="#" class="list-group-item list-group-item-action waves-effect list-side-others">
@@ -92,7 +104,7 @@
             <i class="fas fa-user mr-3"></i>Profesores</a>
         <a href="#" [routerLink]="['/todo']" class="list-group-item list-group-item-action waves-effect list-side-others">
           <i class="fas fa-map mr-3" ></i>TO-DO</a>
-        <a href="#" class="list-group-item list-group-item-action waves-effect list-side-others">
+        <a href="#" [routerLink]="['/calendar']" class="list-group-item list-group-item-action waves-effect list-side-others">
             <i class="fas fa-table mr-3"></i>Calendario</a>
       </div>
       <div class="logout">

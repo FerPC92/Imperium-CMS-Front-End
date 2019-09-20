@@ -37,7 +37,12 @@
     padding: 4px;
     margin-top: 21px;
     text-align: center;
-    font-family: 'Roboto'
+    font-family: 'Muli';
+    
+}
+
+.list-menu-courses-box > h4{
+    font-size: 20px;
 }
 
 .date-text{
@@ -84,10 +89,10 @@
         bottom: 15px;
     }
     .list-menu-box > h3{
-        font-size: 16px;
+        font-size: 13px;
     }
     .list-menu-courses-box > h4{
-        font-size: 12px;
+        font-size: 11px;
         margin-top: 14px;
     }
     .col-list-courses{
@@ -101,5 +106,9 @@
     .col-list-menu{
         display: flex;
     align-items: center;
+    }
+
+    .row-list-menu{
+        flex-wrap: nowrap;
     }
 }

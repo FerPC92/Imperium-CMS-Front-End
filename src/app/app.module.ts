@@ -9,6 +9,8 @@ import { HttpClientModule, HttpClient} from '@angular/common/http';
 import {RouterModule , Routes } from '@angular/router';
 import {AuthGuard} from './guards/auth.guard';
 
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
+
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
@@ -19,6 +21,7 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
 import { AssistanceComponent } from './assistance/assistance.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 let appRoutes : Routes = [
   {"path" : "", "component" :HomeComponent,"canActivate": [AuthGuard] },
@@ -29,6 +32,7 @@ let appRoutes : Routes = [
   {"path" : "editActiveCourse/:id", "component" : EditCourseComponent  ,"canActivate": [AuthGuard]},
   {"path" : "assistanceControl/:id", "component" : AssistanceComponent  ,"canActivate": [AuthGuard]},
   {"path" : "todo", "component" : TodoListComponent  ,"canActivate": [AuthGuard]},
+  {"path" : "calendar", "component" : CalendarComponent  ,"canActivate": [AuthGuard]},
   {"path" : "login", "component" : LoginRegisterComponent},
   {"path" : "**", "component" : ErrorComponent}
   
@@ -50,13 +54,15 @@ let appRoutes : Routes = [
     AddEventComponent,
     EditCourseComponent,
     AssistanceComponent,
-    TodoListComponent
+    TodoListComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FullCalendarModule 
   ],
   providers: [MainService,ApiService,HttpClient],
   bootstrap: [AppComponent]

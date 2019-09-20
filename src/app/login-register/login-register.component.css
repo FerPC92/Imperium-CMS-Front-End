@@ -24,8 +24,10 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  /* border: 1px solid #ff4b2b;
+  background-color: #ff4b2b; */
+  border: 1px solid #176caf;
+  background-color: #176caf;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -91,7 +93,10 @@ input {
   width: 768px;
   max-width: 100%;
   min-height: 480px;
-  margin-top: 70px;
+  /* margin-top: 70px; */
+   margin-top: 150px; 
+   margin-bottom: 30px; 
+
 }
 
 .form-container {
@@ -123,6 +128,28 @@ input {
   opacity: 1;
   z-index: 5;
   animation: show 0.6s;
+}
+
+.dark-brand{
+  color: #002c4e;
+  font-family: 'Muli';
+ /*  text-decoration-line: underline;
+  text-decoration-color: #125488 !important; */
+}
+
+.dark-brand > img{
+  width: 63px;
+  filter: brightness(0.9); 
+  margin-right: 25px;
+  padding-bottom: 6px;
+}
+
+.brand-imperium{
+  position: absolute;
+    right: 390px;
+    font-size: 50px;
+    width: 37%;
+    top: 50px;
 }
 
 @keyframes show {
