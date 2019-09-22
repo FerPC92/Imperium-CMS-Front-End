@@ -8,7 +8,7 @@
       <h3>To-Do List</h3>
     </div>
       <div class="blue-content-2">
-        <input type="text" placeholder="Buscar Tarea " class="input-head">
+        <input type="text" placeholder="Buscar Tarea " class="input-head" (keyup.enter)="filterItems($event)" [(ngModel)]="searchText">
         <i class="fas fa-search"></i>
       </div>
     </div>
@@ -47,18 +47,19 @@
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">Fecha</th>
+          <th scope="col" (click)=" orderByDate()">Fecha <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </th>
           <th scope="col">Tarea</th>
           <th scope="col">Archivos</th>
           <th scope="col">acciones</th>
 
         </tr>
       </thead>
-      <tbody *ngFor=" let element of this._mainService.individualTeacher[0]['todo'] ; let i = index">
+      <tbody *ngFor=" let element of this._mainService.individualTeacher[0]['todo'] ; let i = index" >
         <tr [ngClass]="element.status ? 'checked' : 'uncheck'">
           <th scope="row"><i class="far fa-square" [ngClass]="element.status ? 'far fa-square checkbox' : 'far fa-square'"    (click)="changeCheckedTask(element,i)" ></i></th>
           <td>{{this._mainService.formatDate(element.date)}}</td>
-          <td>{{element.title}}</td>
+          <td>{{element.title }}</td>
           <td>{{element.file | slice:12:30}}</td>
           <td>
             <i class="fas fa-edit"></i>

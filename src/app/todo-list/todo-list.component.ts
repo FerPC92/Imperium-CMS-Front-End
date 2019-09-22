@@ -3,13 +3,50 @@ import { ActivatedRoute } from '@angular/router';
 import {MainService} from '../services/main.service'
 import {ApiService} from '../services/api.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {FilterPipe} from '../pipes/filter.pipe'
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
+
+
+  searchText;
+
+
+  filterItems(event,query) {
+    let key = event.keyCode;
+    query = this.searchText
+    
+    if (key == 13) {
+     let title = this._mainService.individualTeacher[0]["todo"].filter((obj) => {
+        
+       
+        return (obj["title"].toLowerCase().indexOf(query.toLowerCase()) > -1);
+
+      })
+
+      
+      this._mainService.individualTeacher[0]["todo"] = title
+      console.log(this._mainService.individualTeacher[0]["todo"])
+
+    }
+  }
+
+
+  
+  
+
+  
+  
+
+
+
+  orderByDate(){
+
+    this._mainService.individualTeacher[0]["todo"].sort((d1, d2) => new Date(d1.date).getTime() - new Date(d2.date).getTime())
+  }
 
   uploadedFiles: Array < File >;
 

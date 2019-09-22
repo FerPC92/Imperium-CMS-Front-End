@@ -166,6 +166,13 @@
   padding-left: 12px;
 }
 
+.input-head{
+  padding-left: 47px;
+}
+
+.input-head::placeholder{
+  padding-left: 0;
+}
 
 @media (max-width:1000px) {
 

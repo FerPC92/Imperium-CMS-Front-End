@@ -22,6 +22,7 @@ import { EditCourseComponent } from './edit-course/edit-course.component';
 import { AssistanceComponent } from './assistance/assistance.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 let appRoutes : Routes = [
   {"path" : "", "component" :HomeComponent,"canActivate": [AuthGuard] },
@@ -55,7 +56,8 @@ let appRoutes : Routes = [
     EditCourseComponent,
     AssistanceComponent,
     TodoListComponent,
-    CalendarComponent
+    CalendarComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
