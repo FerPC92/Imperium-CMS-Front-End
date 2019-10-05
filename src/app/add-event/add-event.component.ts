@@ -24,6 +24,15 @@ export class AddEventComponent implements OnInit {
     place: {}
   }
 
+  /* getDuration(){
+    if(this.form["courseStartDay"] != undefined && this.form["courseStartDay"] != undefined ){
+
+    
+    this.form["courseDuration"] = this.form["courseStartDay"] - this.form["courseEndDay"]
+    }
+    console.log(this.form["courseDuration"])
+  } */
+
   addCourse(){
 
     let headTeacher = this._mainService.allTeachers.filter(prof => {
@@ -47,7 +56,9 @@ export class AddEventComponent implements OnInit {
       return place['place'] === this.form['place']
     })
 
-    this.form['place'] = places[0]
+    this.form['place'] = places[0];
+
+    
 
     this._mainService.addCourse(this.form)
 
@@ -57,6 +68,8 @@ export class AddEventComponent implements OnInit {
       this._mainService.getTeachers();
       this._mainService.getCategories();
       this._mainService.getPlaces();
+
+     
 
 
    }

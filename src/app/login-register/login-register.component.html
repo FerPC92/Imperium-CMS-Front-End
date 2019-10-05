@@ -6,9 +6,9 @@
       <form action="#">
         <h1 class="create">Create Account</h1>
         <span>Please record your information for registration</span>
-        <input [(ngModel)]="regName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name" />
-        <input type="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="regUser" placeholder="Email" />
-        <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="regPass" placeholder="Password" />
+        <input [(ngModel)]="regName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name" required/>
+        <input type="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="regUser" placeholder="Email" pattern="(\W|^)[\w.+\-]*@neoland\.com(\W|$)" required/>
+        <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="regPass" placeholder="Password" required />
         <button (click)="register()">Register</button>
         <div class="wrong-login">
           {{this._mainService.registerMsg}}
@@ -19,8 +19,8 @@
       <form action="#">
         <h1 class="create">Sign in</h1>
         <span> With your existing account</span>
-        <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="userLogin" placeholder="Email" />
-        <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="passLogin" placeholder="Password" />
+        <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="userLogin" placeholder="Email" pattern="(\W|^)[\w.+\-]*@neoland\.com(\W|$)" required  />
+        <input type="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="passLogin" placeholder="Password" required />
         <a href="#">Forgot your password?</a>
         <button data-toggle="modal" data-target=".bd-example-modal-lg" (click)="login()">Login</button>
         <div class="wrong-login">

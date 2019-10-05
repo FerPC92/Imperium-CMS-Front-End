@@ -5,7 +5,7 @@
     <div class="col  col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="head-text">
         <h1>Lista De Cursos Activos</h1>
-        <a routerLinkActive="active" [routerLink]="['/addCourse']"><button class=" btn-warning button-add-course">Añadir Curso</button></a>
+        <a routerLinkActive="active" [routerLink]="['/addCourse']"><button class=" btn-warning button-add-course" *ngIf="this._mainService.isAdmin">Añadir Curso</button></a>
       </div>
     </div>
 

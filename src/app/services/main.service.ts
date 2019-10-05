@@ -82,6 +82,7 @@ export class MainService {
         this.loginCorrect = response;
         //console.log(this.loginCorrect)
         this._router.navigateByUrl('/home');
+        setTimeout(()=> { window.location.reload()}, 300)
       } else {
         this.loginIncorrect = response["message"]
       }
